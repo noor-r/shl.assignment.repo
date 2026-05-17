@@ -51,10 +51,10 @@ class SHLRetriever:
             row = self.df.iloc[idx]
 
             results.append({
-                "name": row["name"],
-                "url": row["url"],
-                "test_type": row["test_type"],
-                "description": row["description"]
+                "name": row["name"] if pd.notna(row["name"]) else "",
+                "url": row["url"] if pd.notna(row["url"]) else "",
+                "test_type": row["test_type"] if pd.notna(row["test_type"]) else "",
+                "description": row["description"] if pd.notna(row["description"]) else ""
             })
 
         return results
