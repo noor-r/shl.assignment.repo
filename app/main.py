@@ -1,4 +1,3 @@
-
 from fastapi import FastAPI
 
 from app.models import (
@@ -37,7 +36,7 @@ def health():
 def chat(request: ChatRequest):
 
     messages = [
-        m.dict()
+        m.model_dump()
         for m in request.messages
     ]
 
