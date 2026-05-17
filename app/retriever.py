@@ -1,4 +1,3 @@
-
 import faiss
 import numpy as np
 import pandas as pd
@@ -45,6 +44,9 @@ class SHLRetriever:
         results = []
 
         for idx in indices[0]:
+
+            if idx == -1:
+                continue
 
             row = self.df.iloc[idx]
 
