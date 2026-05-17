@@ -2,7 +2,7 @@ fastapi
 uvicorn
 pydantic
 pandas
-numpy
+numpy<2
 faiss-cpu==1.7.4
 sentence-transformers
 requests
