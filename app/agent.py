@@ -1,4 +1,3 @@
-
 from app.guardrails import Guardrails
 from app.conversation import ConversationAnalyzer
 from app.ranking import RecommendationRanker
@@ -66,8 +65,23 @@ class SHLAgent:
                 "end_of_conversation": False
             }
 
+        # Build an enriched query from the full context so retrieval uses
+        # role, seniority and skills — not just the latest message alone
+        query_parts = [latest_message]
+
+        if context["role"]:
+            query_parts.append(context["role"])
+
+        if context["seniority"]:
+            query_parts.append(context["seniority"])
+
+        if context["skills"]:
+            query_parts.extend(context["skills"])
+
+        enriched_query = " ".join(query_parts)
+
         retrieved = self.retriever.search(
-            latest_message
+            enriched_query
         )
 
         ranked = self.ranker.rerank(
