@@ -23,8 +23,7 @@ class SHLAgent:
 
             recommendations.append({
                 "name": item["name"],
-                "url": item["url"],
-                "test_type": item["test_type"]
+                "url": item["url"]
             })
 
         return recommendations
