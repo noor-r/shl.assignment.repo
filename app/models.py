@@ -1,4 +1,3 @@
-
 from pydantic import BaseModel
 from typing import List
 
@@ -15,7 +14,6 @@ class ChatRequest(BaseModel):
 class Recommendation(BaseModel):
     name: str
     url: str
-    test_type: str
 
 
 class ChatResponse(BaseModel):
